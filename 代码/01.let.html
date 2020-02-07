@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // var a = 1;
+        // let b = 2;
+        // // 可以试着全局替换把所有var 转成 let
+        // console.log(a,b);
+
+
+
+        // 与var 区别
+        // 1.不能重复定义
+        // var a = 1;
+        // var a = 2;
+        // console.log(a);  // 2
+
+        // let a = 1;
+        // let a = 2;// Uncaught SyntaxError: Identifier 'a' has already been declared
+        // console.log(a);  // 2
+         
+        // 2.let具有块级作用域，var 没有
+        
+        
+        // 3.let没有变量提升，var有
+        // console.log(a);
+        // var a = 1;
+        // console.log(a);
+
+        // console.log(a); //01.let.html:34 Uncaught ReferenceError: Cannot access 'a' before initialization
+        // let a = 1;
+        // console.log(a);
+
+
+        // 4.全局变量不会成window对象的属性
+        // var a = 1;
+        // console.log(a);
+        // console.log(window.a); // 可以访问
+
+        let a = 1;
+        console.log(a);
+        console.log(window.a); // undefined 不可以访问
+
+        
+        
+    </script>
+</body>
+</html>

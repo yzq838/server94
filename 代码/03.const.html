@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // const abc = 100;
+        // const COMPANY_NAME = "nb公司....";
+        // console.log(COMPANY_NAME);
+
+        // // 一般常量名是大写，变量名是小写。
+
+        // // 只能访问，不能修改
+        // // console.log(abc);
+        // // abc = 200; // Uncaught TypeError: Assignment to constant variable.
+        // // console.log(abc);
+
+        // // const a ; // Missing initializer in const declaration
+        // // a = 200;
+
+        // {
+        //     const A = 100
+        //     console.log(A);
+            
+        // }
+        // console.log(A);//Uncaught ReferenceError: A is not defined
+
+        // 常量的本质
+        // const a =100
+        // const obj = {a:1};
+        
+        // obj = {a:2};// Assignment to constant variable.
+
+        // obj.a = 2;
+        // console.log(obj); 
+        // 问题：obj对象的属性值a是否修改了。答，改了。
+
+
+
+        // 生成一个不能被修改的对象
+        function makeConst(obj){
+            Object.freeze(obj);
+            Object.keys(obj).forEach(function(key){
+                if(typeof obj[key] === 'object'){
+                    makeConst(obj[key])
+                }
+            })
+        }
+
+        const obj = {a:1,b:2};
+        makeConst(obj);
+        obj.a = 200; //不报错，但是不生效
+        obj.c = 100; //不报错，但是不生效
+        console.log(obj); //值保持不变
+
+
+        
+
+    </script>
+</body>
+</html>

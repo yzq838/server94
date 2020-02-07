@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+// let arr = [1,2,3,4];
+// // 需求:快速地从数组中取出值来赋值给变量a,b,c,d
+// // let a = arr[0];
+// // let b = arr[1];
+// // let c = arr[2];
+// // let d = arr[3];
+
+// // // 把值从数组中取出来，保存在变量中
+// let [a,b,c,d] = [1,2,3,4];
+// console.log(a,b,c,d)
+
+
+// 变量多，值少
+// let arr = [5, 9, 10];
+// let [a, b, c, d] = arr;
+// console.log(a, b, c, d); 
+// 结论：没有匹配上的值是undefined
+
+// // 默认值
+// let arr = [5, 9];
+// let [a, b, c, d=4] = arr;
+// console.log(a, b, c, d); 
+// 结论：对于没有匹配上的变量，有默认值就使用默认值，否则就是 undefined，
+
+// 变量少，值多
+// let arr = [5, 9, 10, 8, 3, 2];
+// let [a, b] = arr;
+// console.log(a, b); 
+// 结论：多余的忽略
+
+// // 用空跳过不需要的值
+// let arr = [5, 9, 10, 8, 3, 2];
+// let [ , , a, , b] = arr; 
+// console.log(a, b); 
+// // 结论：不需要用变量接收的值，用空位占位
+
+// 复杂的场景，只要符合模式，即可解构
+let arr = ['zhangsan', 18, ['175cm', '65kg']];
+// // 如何让a的值是175cm,b的值是65kg?
+// let [,,[a,b]] = arr;
+// // shangsan， 175
+// let [a, ,[b]] = arr;
+// console.log(a, b); // zhangsan 175cm
+
+</script>
+</body>
+</html>
