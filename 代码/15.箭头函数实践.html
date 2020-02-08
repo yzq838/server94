@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" data-id="1">按钮</button>
+    <script>
+        // 箭头函数使用指南
+        // 1. 如果不涉及this，可以放心使用；用它来替换函数声明式，函数表达式 定义的函数。
+            // 常见会涉及this的：构造器，继承，事件响应函数...
+        // 2. 如果函数内部有用到this,则一定特别注意：先打出来看看。
+    
+        var arr = [ 1,4,2,3,5,-1,7]; 
+        // arr.sort(function(a,b){
+        //     return a - b;
+        // })
+        // 以上函数中没有用到this，可以改成箭头
+        arr.sort((a,b)=> a - b)
+
+        console.log(arr)
+
+        // document.getElementById('btn').onclick = function(){
+        //     console.log( this ) // 就是btn
+        //     alert( this.getAttribute('data-id') )
+        // }
+
+        document.getElementById('btn').onclick = ()=>{
+            console.log( this ) // 是 Window .因为这是箭头函数。
+            // alert( this.getAttribute('data-id') )
+        }
+
+    
+    </script>
+</body>
+</html>

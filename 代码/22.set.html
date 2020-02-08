@@ -1,0 +1,42 @@
+<script>
+
+// ### 创建set对象
+
+// 1.创建空set；
+
+// var s1 = new Set(); // 类似于 var arr = new Array();
+// console.log(s1);
+
+// 2. 根据已有数组创建set
+
+// var s2 = new Set([1,2,3]); //给构造器传递一个参数：数组
+// s2.add("100")
+// console.log(s2.size) ; //size就类似于数组中的length
+// console.log(s2);
+
+// 应用-数组去重
+// 利用它的成员不会重复这一特点。
+var arr = [1,2,3,1,2,3]; // 希望得到一个没有去掉了重复值之后数组 [1,2,3]
+// 1.创建一个空set. 
+// 2. 用循环把数组中的每一项者取出来，添加到这个set中 （由于set本身就具有元素不重复特点）
+// 所以这个过程就是在去重
+// 3.把set转回成数组
+
+// var s1 = new Set();
+// arr.forEach( item=> s1.add(item))
+
+// console.log(s1);
+// var arr2 = Array.from( s1 )
+// console.log(arr2)
+
+// var s1 = new Set( arr )
+// var arr2 = [ ...s1 ]   // ...也可以用在set对象上。
+// console.log(arr2);
+
+var arr2 = [ ...new Set( arr )]
+console.log(arr2);
+
+
+
+
+</script>

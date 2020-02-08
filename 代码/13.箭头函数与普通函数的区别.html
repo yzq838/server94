@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 箭头函数与普通函数的区别
+    // 1. 内部没有arguments
+    // 2. 不能作为构造器
+    // const f1 = function(){
+    //     console.log(arguments);   
+    // }
+
+    // // 函数的剩余参数来代替arguments
+    // const f2 = (...arg)=>{
+    //     // Uncaught ReferenceError: arguments is not defined
+    //     // console.log(arguments);   
+    //     console.log(arg);   
+    // }
+
+    // f1(1,2,3);
+    // f2(1,2,3);
+
+
+    // - 不能作为构造器
+
+    const f1 = function(){
+           
+    }
+    const f2 = ()=>{
+ 
+    }
+    // 函数表达式定义函数，可以作构造器来用
+    let obj1 = new f1();
+    console.log(obj1);
+
+    // 箭头函数不可以作构造器来用
+    // Uncaught TypeError: f2 is not a constructor
+    let obj2 = new f2();
+    
+
+    
+    </script>
+</body>
+</html>

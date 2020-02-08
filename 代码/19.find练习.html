@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            let data = [
+                {id:2,name:'严嵩',age:15},
+                {id:3,name:'徐阶',age:17},
+                {id:4,name:'高拱',age:18},
+                {id:1,name:'张居正',age:12},
+            ]
+            // 求出 高拱的年龄?
+            // 思路 ：在数组中找出对象，输出他的年龄
+            // let result = data.find( function(item){
+
+            //     if(item.name === '高拱' ){
+            //         return true
+            //     }
+            // })
+            // 用箭头函数来改写上面的代码
+            let result = data.find( t =>t.name === '高拱')
+
+            console.log(result.age);
+    </script>
+</body>
+</html>

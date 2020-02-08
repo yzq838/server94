@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <script>
+
+// ## Array.from()
+
+// 功能：把其它非数组的对象转成数组。
+// arguments
+// domList : document.getElementsByName
+    // Array.from(伪数组) === 》数组
+    var lis = document.getElementsByTagName("li")
+    console.log(lis);
+
+    var arr = Array.from(lis)
+    console.log(arr);
+    
+    
+
+
+    </script>
+</body>
+</html>
