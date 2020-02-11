@@ -9,6 +9,7 @@ const path = require('path');
 const DATA_FILE = "message.json"
 // NB的优化：消除魔术数！
 
+// 拼接一个绝对路径
 let filePath = path.join(__dirname,DATA_FILE)
 
 const getMsg = ()=>{

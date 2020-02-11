@@ -3,9 +3,12 @@ const fs = require('fs')
 
 // fs.readFile("01.js","utf8")
 // fs.readFile("01.js","utf8",function (err, data) {
-
+const path = require('path')
 console.log(1)
-fs.readFile("01.js1111",function (err, data) {
+console.log(path.join(__dirname , "./01.js"));
+
+fs.readFile(path.join(__dirname , "./01.js"),function (err, data) {
+// fs.readFile("./01.js",function (err, data) {
     console.log(2)
     // 回调函数，自动调用
     // 如果有错误，则错误信息会保存第一个参数中

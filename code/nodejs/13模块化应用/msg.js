@@ -1,5 +1,5 @@
+// 封装对message.json的操作，并导出
 
-// 向同级目录下的message.json的内容插入一条记录
 
 // 文件模块
 const fs = require('fs');
@@ -9,12 +9,13 @@ const path = require('path');
 const DATA_FILE = "message.json"
 // NB的优化：消除魔术数！
 
+// 拼接一个绝对路径
 let filePath = path.join(__dirname,DATA_FILE)
 
 /**
- * 获取留言
+ * 获取message文件中的内容
  */
-const getMsg = ()=>{
+const get = () => {
     // 使用 同步 的方式读
     let rs = fs.readFileSync(filePath,'utf8')  
     // rs数据 是什么格式的？ string
@@ -28,6 +29,7 @@ const getMsg = ()=>{
     return arr;
 }
 
+
 /**
  * 添加留言
  * 传入name及content即可，id是自动增长的，dt是时间戳
@@ -35,11 +37,11 @@ const getMsg = ()=>{
  * @param {*} name  用户名
  * @param {*} content  内容
  */
-const addMsg = (name,content)=>{
+const add = (name,content)=>{
     // 分析:如何向一个.json文件中添加一条数据
     // 思路：
     // 1. 读出文件内容，转成数组
-    let arr = getMsg()
+    let arr = get()
     
     // 2. 用数组的append方法，添加一条记录
     // 数组的最后一个元素如何获取？ [3,4] 要长度减一。
@@ -69,8 +71,38 @@ const addMsg = (name,content)=>{
     return arr
 }
 
+/**
+ * 删除
+ * @param {*} id  要删除的那一条记录的id号
+ * 
+ * message.json中保存了很多记录
+ */
+const del = id => {
+    // 自已写代码
+    // 思路：
+    // 1. 取出全部的数据，得到一个数组
+    let arr = get();
+    // 2. 在数组中找出id值为指定参数的那条记录，然后删除它。
+    //  找出索引，
+    let idx = arr.findIndex(item => item.id == id)
+    console.log(idx);
+    //  调用splice
+    //  在一个数组中删除下标为idx的元素
+    arr.splice(idx, 1)
+    // 3. 把删除了记录之后数组写回到文件中
+    // 采用同步的写文件 writeFile
+    // 把数组转字符串再写入
+    fs.writeFileSync(filePath,JSON.stringify(arr))
+}
 
+/**
+ * 修改 message.
+ */
+const update = () => {
 
-let rs = addMsg("小张","明天要休息一天")
-let rs1 = addMsg("小陈","想的真美丽！程序员还有休息的时间吗？")
-
+}
+module.exports = {
+    "get" : get,
+    "add" : add,
+    "del" : del
+}
