@@ -5,8 +5,8 @@
 // exports = {
 //     a:1
 // }
-// exports.a = 1;
-module.exports.a = 1;
+exports = {a:1};
+// module.exports.a = 1;
 
 // exports= {a: 100}
 // module.exports.b= 200;

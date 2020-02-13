@@ -1,34 +1,27 @@
-
-
- 
-
-## http模块-实现接口功能
+http模块-实现接口功能
 
 在前面学习ajax时，我们说接口是后端同学写好的，我们前端同学只需要调用即可。现在，我们学习了nodejs，我们就可以客串一把后端同学的角色，来试着写写接口了。
 
-### get类型的接口-无参数
+## 写一个接口试试
 
-现在假设我们自己就是一名后端程序员，现在要实现一个get类型的接口。具体要求如下：
+get类型的接口-无参数
 
-地址：http://localhost:8000/gettime
+现在假设我们自己就是一名后端程序员，现在要实现一个**get**类型的接口。具体要求如下：
 
-功能：以json字符串格式返回服务器的时间戳。
+地址：http://localhost:8083/getmsg
 
-示例：
-
-```
-输入:localhost:8000/gettime;
-返回:{_t:1563265441778}
-```
+功能：以json字符串格式返回`message.json`的内容。
 
 **要使用postman软件进行测试。**
+
+
 
 参考代码：
 
 ```javascript
 const http = require('http');
 const app = http.createServer((req, res) => {
-  if (req.url === '/gettime' && req.method=== 'GET') {
+  if (req.url === '/getmsg' && req.method=== 'GET') {
     let obj = {_t : Date.now()}
     res.end(JSON.stringify(obj));//  把对象转成字符串之后再返回
   } else {
@@ -42,12 +35,12 @@ app.listen(8083, () => {
 
 说明：
 
-- 注意：**类型**，
+- 注意：**类型**
 - req.method 可以判断请求的类型
 - res.end()的参数只能是字符串（或者是buffer），而不能是对象
 - res.end( JSON.stringify(对象) )
 
-### 接口与静态资源的区别
+## 理解接口与静态资源的区别
 
 
 
@@ -90,16 +83,15 @@ url:http://nodejs.cn/api/querystring.html
 url:http://oa.itcast.cn/seeyon/main.do?method=main
 
 url:https://mail.qq.com/cgi-bin/frame_html?sid=aLqnlljMxF54DgtW&r=d281ced83329f34caae9786fcb5d4934
-
 ```
 
 显然，不能，你能从服务器上获得什么，完全是由服务器决定的。
 
-### 理解url
+## 理解url
 
 全称：Uniform Resource Locator，统一资源定位符。
 
-作用： 定位资源(css,html,js,png, avi......)。
+作用： 定位资源(css,html,js,png, avi，接口......)。
 
 格式：`协议://主机地址[:端口]/路径?查询字符串#锚点`
 
@@ -141,7 +133,7 @@ url:https://mail.qq.com/cgi-bin/frame_html?sid=aLqnlljMxF54DgtW&r=d281ced83329f3
 
 
 
-### nodejs中的url模块
+## nodejs中的url模块
 
 作用:url模块用来对url（例如：http://itcast.cn:80/schools/students?id=18&name=zs#photo）进行解析，进而得到各种信息。
 
@@ -157,7 +149,7 @@ url:https://mail.qq.com/cgi-bin/frame_html?sid=aLqnlljMxF54DgtW&r=d281ced83329f3
 
   - obj = url.parse(地址栏中输入的url)
 
-  > ```
+  > ```javascript
   > let urlobj = url.parse(req.url); // urlobj对象中，就有我们需要的信息
   > urlobj.pathname :获取用户输入的url的路径名 ('/schools/students')
   > urlobj.search: '?id=18&name=zs',
@@ -168,33 +160,33 @@ url:https://mail.qq.com/cgi-bin/frame_html?sid=aLqnlljMxF54DgtW&r=d281ced83329f3
 
 上面urlobj.query只是获得了传递的全部参数，我们一般还需从地址栏中分析传递的数据。即从 `http://itcast.cn:80/schools/students?id=18&name=zs#phot`中分析出id和name的值来。这个操作是如何实现的呢？
 
-### nodejs中的querystring模块
+## nodejs中的querystring模块
 
 用来对url中的查询字符串这部分进行处理。nodejs中提供了querystring这个核心模块来帮助我们处理这个需求。
 
-地址：https://nodejs.org/api/querystring.html#querystring_querystring_parse_str_sep_eq_options
+[地址](https://nodejs.org/api/querystring.html#querystring_querystring_parse_str_sep_eq_options)
 
 示例
 
 ```javascript
 const qs= require('querystring');
 let obj = qs.parse('id=18&name=zs');
-console.log(obj)
+console.log(obj) // {id:18, name:"zs"}
 ```
 
 
 
-### get类型的接口-带参数
+## get类型的接口-带参数
 
 现在假设我们自己就是一名后端程序员，现在要实现一个get类型的接口。具体要求如下：
 
-> 地址：localhost:8080/get
+> 地址：localhost:8080/getmsg?id=2&name=ammey
 >
-> 功能：获取用户传入的参数，并以json字符串格式返回，在返回的信息中要加上时间戳.
+> 功能：获取用户传入的参数，并以json字符串格式返回
 >
 > 示例：
 >
-> ```
+> ```javascript
 > 1.不加参数
 > 输入:localhost:8080/get;
 > 返回:{_t:1563265441778}
@@ -246,52 +238,62 @@ server.listen(8088, function() {
 
 
 
-### post接口
+## post接口
 
 假设我们自己就是一名后端程序员，现在要实现一个post类型的接口。具体要求如下：
 
-> 地址：localhost:8000/post
+> 地址：localhost:8080/addmsg
 >
 > 功能：获取用户传入的参数，并以json字符串格式返回，在返回的信息中要加上时间戳.
 >
 > 示例：
 >
 > ```
-> 接口地址:localhost:8080/post
+> 接口地址:localhost:8080/addmsg
 > 参数：name=filex&age=30;
 > 返回:{name:filex,age:30,_t:1563265441778}
 > ```
 >
 > 要求：通过postman软件的测试。
 
-
+### 预备知识
 
 post类型与get类型的接口区别较大，主要在两个方面：
 
 1. 类型不同
 
-   对于类型不同还比较好判断，我们可以通过 req.method 来获取
+   对于类型不同还比较好判断，我们可以通过 req.method 来获取（GET,POST）
 
 2. 传参不同
 
-   - get请求参数在请求行中（附加在url后面）
-   - post请求参数在`请求体`中
+   - get请求参数在请求行中（附加在url后面）,内容比较少。
+   - post请求参数在`请求体`中。内容比较大。
 
-对于获取post参数就相对复杂一些，主要是用到request对象的两个事件`data`,`end`。
+对于获取post参数就相对复杂一些。它的特点是：
+
+1. 参数在请求体中发给后端
+2. 后端是一段一段接收数据的，并不像get在请求行中传递的数据：直接写在url中的查询字符串内，可以立即通过req.url来解析出来。
+3. 在接收参数的过程中，会涉及request对象的两个事件`data`,`end`。
+   - data事件，每次收到一部分参数数据就会触发一次这个事件。
+   - end事件，全部的参数数据接收完成之后会执行一次。
+
+
+
+
+
+### 基本流程
 
 基本流程是：
 
-1. 在req对象上添加两个事件，用来收集参数
+1. 定义一个空容器result来装参数。
+2. 在req对象上监听data事件。这个事件触发一次，就把当次收到的数据向result中填充一些。
+3. 在req对象上监听end事件。这个事件触发时，就表示整个参数数据接收完成，此时取出容器result中的内容，进行解析，以取出参数。
 
-   1. req.on("data",function(chunk){ })
 
-      每次收到一部分数据就会触发一次这个事件，回调函数也会相应的执行一次。其中的chunk是一个形参（你也可以换个参数名），它是一个buffer。
 
-   2. req.on("end",function(){})
+### 参考代码
 
-2. 解析参数
-
-   1. queryString
+queryString
 
 ```javascript
 // 实现post接口
@@ -302,9 +304,6 @@ const qs = require('querystring')
 
 const server = http.createServer((req,res)=>{
     if(req.url === '/post' && req.method === "POST"){
-        // 如何去收集post的参数？
-        // 注册事件：on(事件名，回调)
-
         // data事件
         // 当收到一部分数据之后，就会执行一次回调函数，可能会执行多次
         // 并且回调中的参数就是本身收到的这一部分数据（buffer格式）
@@ -321,7 +320,7 @@ const server = http.createServer((req,res)=>{
         req.on('end',function(){
             console.log('服务器接收post参数完毕');
             // 最终得到的是一个查询字符串 a=1&b=2
-            // 把查询字符串转成对象？
+            // 把查询字符串转成对象？使用queryString模块
             let obj = qs.parse( result );
             console.log(result ,obj); 
 
@@ -354,4 +353,3 @@ xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
 xhr.send("name="+"imissyou".repeat(100000));
 ```
 
-1
