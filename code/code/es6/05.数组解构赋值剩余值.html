@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // let arr = [5, 9, 10, 8, 3, 2];
+    let arr = [5, 9];
+    // let [a, b, c] = arr; 
+    let [a, b, ...c] = arr; // ...c 接收剩余的其他值，得到的c是一个数组
+    // let [a, ...b, c] = arr; // Rest element must be last element
+    console.log(a, b, c); 
+
+</script>
+</body>
+</html>

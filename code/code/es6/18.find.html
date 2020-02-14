@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <script>
+    let arr = [1,2,3,4,5,1];
+    // 目标：找出第一个小于0的元素
+    // let result = arr.find(function(item,index,self){
+    //     console.log(item,index,self);
+    //     if( item < 0){
+    //         // 如果有return true,结束查找的过程，并返回当前元素，作为find的返回值
+    //         return true;
+    //     }
+       
+    // })
+    // // 找不到，就返回undefined
+
+    // console.log(result);
+    // 下面，用箭头函数来改写上面的代码
+
+    let result = arr.find( item => item < 0 )
+    let idx = arr.findIndex( item => item < 0 )
+    // 找不到，就返回undefined
+
+    console.log(result,idx);
+    
+    
+    
+
+
+    </script>
+</body>
+</html>

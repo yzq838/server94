@@ -1,0 +1,22 @@
+<script>
+    
+    // var obj1 = {a:1,b:2};
+    // // 1. 向一个已有对象添加新属性
+    // // 它会直接修改目标对象 
+    // var obj2 = Object.assign(obj1, {c:1},{d:100})
+    // console.log(obj1);
+
+    // 2.实现由几个小对象一起 创建一个全新对象
+    // 如果源对象中有属性重叠，则以后面的为准
+    // var obj = Object.assign({}, {a:1},{b:2},{c:3,a:200})
+    // console.log(obj);
+
+    // 3.实现快速 浅拷贝
+    var obj = {a:1,b:2,c:3}
+    // 相当于复制obj
+    var obj1 = Object.assign({}, obj)
+    console.log(obj1);
+    
+    
+    
+</script>
