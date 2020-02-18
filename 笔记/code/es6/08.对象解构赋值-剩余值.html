@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 把其它的属性全收集起来放在一个对象 
+        // 1. 如果收不到剩余的，则它是一个空对象。
+        //  2.只能出现在最后一个元素前
+        let obj = {nickname:'zs', age:20, gender:'男'};
+        // let obj = {};
+        // let { ...nickname,a} = obj; // Uncaught SyntaxError: Rest element must be last element
+        let { nickname,...a} = obj;
+        console.log(nickname, a);
+
+    </script>
+</body>
+</html>

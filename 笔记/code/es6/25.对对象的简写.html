@@ -1,0 +1,36 @@
+<script>
+
+    // es6允许我们在写对象时少写一点代码：
+    // 1. 对属性名的简写
+    // 2. 对方法的简写
+
+    // function f () {
+    //     var name = "abc"
+    //     // 1. 对属性名的简写
+    //     // 如果一个对象的属性值是一个变量，且变量名与属性名相同
+    //     // 可以简写成 变量名
+    //     // return {"name":name}
+    //     return {name}
+    // }
+
+    // console.log( f() )
+
+    var obj =  {
+        name: "abc",
+        f1:function(){
+            console.log(this.name)
+        },
+        f2(){
+            // es6允许的简写格式；
+            // 不是箭头函数 不是箭头函数 不是箭头函数
+            console.log(this.name)
+        },
+        f3:()=>{
+            // 箭头函数。
+            console.log(this.name)
+        },
+    }
+
+    obj.f1();
+    obj.f2()
+</script>

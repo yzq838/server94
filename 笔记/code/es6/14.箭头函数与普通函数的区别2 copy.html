@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// 箭头函数与普通函数的区别
+    // 1. 内部没有arguments
+    // 2. 不能作为构造器
+    // 3. 内部没有this
+    //    (1) 它可以访问this，只是这个this不是它自已的（类似在函数内部访问一个不是由它自己定义的变量）
+    //    (2) 它能访问到的this是在定义这个箭头函数时，所在的位置，能访问到的this,理解为从外层继承过来的。
+    
+    
+    // console.log(this)
+    // let obj = {
+    //     name: 'a',
+    //     f1 : () => {
+    //         console.log(this); // window
+    //         console.log(this.name); // window.name === ''
+    //     },
+    //     f2 : function(){
+    //         console.log(this); // obj
+    //         console.log(this.name); // a
+    //     }
+    // };
+    // obj.f1();
+
+    // // f2是一个普通函数，它内部的this的确定方式：谁调用它，它就指向谁。
+    // obj.f2();
+
+    var obj = {abc: 100}
+    var obj2 = {abc: 1}
+
+    function f1(){
+        console.log(this.abc)
+    }
+    console.log(this)
+    const f2 = () =>{
+        console.log(this.abc)
+    }
+    // 格式：普通函数.call(对象)
+    // 作用：用对象来作为函数内部的this，并执行函数
+    // f1.call(obj)
+    // f1.call(obj2); //  1
+
+    // 由于f2是箭头函数，所以它没有自己的this，无法通过call来修改。它能够访问的this是定义
+    // 这个箭头函数时，外层 空间 的this.
+    f2.call(obj2);    //  undefined window.abc ===> undefined
+
+    
+    </script>
+</body>
+</html>

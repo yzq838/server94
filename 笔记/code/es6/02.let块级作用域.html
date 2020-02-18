@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        var a = 1000;
+        let b = 100
+
+        console.log(abc);
+        
+    </script>
+
+    <script>
+        var abc = 10000
+
+        console.log(a);
+        console.log(b);
+        
+    </script>
+
+    <script>
+
+    //    复习：js中的变量作用域
+    //    1. 全局作用域
+    //    2. 局部作用域（函数作用域）
+    //    3. 块级作用域 （es6中才有的）
+    //      （1）必须是由let，const声明的变量和常量
+         
+        // var a  = 1 ; // 变量a有全局作用域
+        // function f(){
+        //     var b = 2;  
+        //     // 变量b具有局部作用域，它只在函数内部使用，出了函数就不能用了
+        //     console.log(a)
+        //     console.log(b)
+        // }
+        // console.log(a);
+        // console.log(b); // 02.let块级作用域.html:24 Uncaught ReferenceError: b is not defined
+
+        
+        // {
+        //     var a = 1;
+        // }
+
+        // console.log(a); // 可以访问上面定义在大括号内部，由var定义的变量。
+
+
+        // {
+        //     let a = 1;
+        // }
+        // // Uncaught ReferenceError: a is not defined
+        // console.log(a); // 不可以访问上面定义在大括号内部，由let定义的变量。
+
+
+        // 块级作用域的嵌套
+    // debugger;    
+    // 调试代码时使用，如果加上它，则程序在执行时，
+    // 会停在此处，并进入调试状态
+        let c = 1;
+        var a = 100;
+
+        {
+            let a = 1;
+            {
+                let a = 2;
+                console.log(a); // 2
+                a = 3;
+                console.log(a); // 3
+            }
+            console.log(a); // 1
+        }
+
+
+        // 隐藏的块级作用域
+        // let定义的变量
+        // for (let i = 0; i < 10; i++) {
+        //     // i 只能在此范围内使用，因为有块级作用域
+        // }
+        // console.log(i);  // 报错，此作用域中没有i的定义
+
+        // 块级作用域的嵌套内层可以访问外层的变量
+        // {
+        //     let a = 1;
+        //     {
+        //         let b = 2;
+        //         {
+        //             console.log(a,b);
+                    
+        //         }
+        //     }
+        // } 
+    </script>
+</body>
+</html>

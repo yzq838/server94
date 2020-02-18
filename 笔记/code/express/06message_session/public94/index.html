@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>留言板</title>
+    <link rel="stylesheet" href="./assets/bootstrap.css" />
+    <style>
+    
+    #messages img{
+      width: 50px;
+    }
+    .main{
+      height:450px;
+      padding:20px;
+      overflow: auto;
+      border:1px solid #ccc;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="display-6">留言板</h1>
+      <hr />
+      <div class="main">
+        <ul id="messages" class="list-unstyled">
+          <!-- <li class="media">
+            <img class="mr-3" src="./assets/avatar.png" alt="张三" />
+            <div class="media-body">
+              <h4>张三</h4>
+              <p>寒雨连江夜入吴</p>
+              <p>2019-06-07</p>
+            </div>
+          </li>
+          <li class="media">
+            <img class="mr-3" src="./assets/avatar.png" alt="张三" />
+            <div class="media-body">
+              <h4>张三</h4>
+              <p>平明送客楚江孤</p>
+              <p>2019-06-07</p>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+      
+      <hr />
+      <!-- 没有登陆 -->
+      <div id="linkArea">
+        <a href="./login.html">请登陆</a>
+      </div>
+
+
+      <!-- 已经登陆 -->
+      <form id="formArea" style="display: block;">
+        <div class="form-group">
+          <label for="txt_name">称呼：</label>
+          <label id="label_name">***</label>
+          <button type="button" id="btnQuit">退出</button>
+        </div>
+        <div class="form-group" style="display: flex">
+          <label for="txt_content" style="display:none">留言：</label>
+          <input type="text" id="txt_content" class="form-control">
+         
+          <button id="btn_send" type="button" class="btn btn-primary">提交</button>
+        </div>
+      </form>
+    </div>
+    <script src="./jquery-1.8.1.js"></script>
+    <script>
+      // 进入主页；请求get_user接口，用来检查当前是登陆 
+
+      $.get("http://localhost:8084/get_user").then(res=>{
+        console.log(res);
+        if(res.code == 200){
+          // 当前是已经登陆的
+          // 显示留言区域，隐藏登陆区域
+          $("#linkArea").hide()
+          $("#formArea").show()
+          // 显示当前用户名
+          $("#label_name").text( res.data.name)
+          // 可以发布留言
+        } else {
+          // 说明没有登陆
+          $("#linkArea").show()
+          // 隐藏留言区域
+          $("#formArea").hide();
+        }
+      })
+    
+      // 退出
+      $("#btnQuit").click(()=>{
+        $.get("http://localhost:8084/quit").then(res=>{
+          if(res.code == 200){
+            // 退出成功，跳到login页面
+            window.location.href= "./login.html"
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

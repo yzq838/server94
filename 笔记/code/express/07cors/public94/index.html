@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    
+  </head>
+  <body>
+    <div>
+      <button id="btnGet">get请求</button>
+      <button id="btnGet8080">getapi请求8080</button>
+      <button id="btnGet8081">getapi请求8081</button>
+      <button id="btnPost8081">post请求8081</button>
+      <button id="btnPostok">post请求Postok</button>
+      
+    </div>
+    <script src="./jquery-1.8.1.js"></script>
+
+    <!-- script： src指向后端接口地址 
+      它会发出这个请求，这个请求不是ajax请求
+      这个请求是跨域的，为什么不报错？ 因为它不是ajax所以它不会报错。
+      它会正常取回 后端接口的返回值 ，并放在<script>中去执行</script>
+    -->
+    <!-- <script>
+      // 因为后传过的是fn(100)，这里提前放一个fn
+      function fn(res){
+        console.log("从服务器返回的数据是：",res);
+      }
+    </script> -->
+    <!-- ?callback=fn 传递参数给后端：告诉后端，请把回来的函数名用 fn -->
+    <!-- <script src="http://localhost:8080/getapi8080?callback=fn">
+    
+    // src请求回来的，响应体，会自动放在这里当作js代码来执行。
+    </script> -->
+    <script>
+      $("#btnGet").click(function(){
+        $.get("http://localhost:8084/get")
+      })
+
+      $("#btnGet8080").click(function(){
+        // 跨域的
+        $.ajax({
+          url:"http://localhost:8080/getapi8080",
+          type:'get',
+          dataType:"jsonp" /*以jsonp的方式去请求*/
+        }).then(function(res){
+          console.log(res)
+        })
+        // $.get("http://localhost:8080/getapi8080")
+      })
+
+      $("#btnGet8081").click(function(){
+        // 跨域的
+       
+        $.get("http://localhost:8081/getapi8081").then(res=>{
+          console.log(res);
+          
+        })
+      })
+
+      $("#btnPost8081").click(function(){
+        // 跨域的
+       
+        $.post("http://localhost:8081/post8081").then(res=>{
+          console.log(res);
+          
+        })
+      })
+      $("#btnPostok").click(function(){
+        // 跨域的
+       
+        $.post("http://localhost:8081/postok").then(res=>{
+          console.log(res);
+          
+        })
+      })
+
+      
+
+      
+
+
+    </script>
+  </body>
+</html>

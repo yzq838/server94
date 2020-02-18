@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+        // let { "nickname":nickname, "age":age } = {"age": 27, "nickname": '阳明'};
+        // let { nickname, age } = {"age": 27, "nickname": '阳明'};
+        // console.log(nickname, age); 
+
+        // let {a, c} = {a: 'hello', b: 'world'};
+        // console.log(a, c); // hello, undefined
+
+        // let {"b":b, "nickname":a} = {"nickname": '王阳明'};
+        // console.log(a, b); 
+
+        // 默认值
+// // var {b=1, nickname:a,age:b=1 } = {nickname: '王阳明'};
+// let {"b":b=1, "nickname":a,"age":b=1 } = {"nickname": '王阳明'};
+// console.log(b, a); 
+
+
+// 复杂的嵌套，只要符合模式，即可解构
+// let obj = {
+//     "nickname": 'zhangsan',
+//     "age": 22,
+//     "dog": {
+//         "nickname": '毛毛',
+//         "age": 3
+//     }
+// };
+// // 如何才能把age和nickname解析出来
+// let { nickname,dog:{age}   } = obj;
+// console.log(nickname, age); // zhangsan 3
+
+// let {"dog": {"nickname":nickname, "age":age}} = obj;
+// console.log(nickname, age); // 毛毛 3
+
+
+// 假设从服务器上获取的数据如下
+// let res = {
+//     data: ['a', 'b', 'c'],
+//     meta: {
+//         code: 200,
+//         msg: '获取数据成功'
+//     }
+// }
+// // 如何获取到 code 和 msg
+// // let { "meta": {"code":code,"msg":msg } } = res;
+// // let { "meta": {code,msg } } = res;
+// let { meta: {code,msg } } = res;
+// console.log(code, msg); // 200, 获取数据成功
+
+
+let {max,min,PI} = Math; // Math是什么？
+console.log(max,min,PI); //?
+// let max = Math.max;
+// let min = Math.min;
+// let PI = Math.PI
+console.log(min(1,-1,0));
+
+
+
+    </script>
+</body>
+</html>

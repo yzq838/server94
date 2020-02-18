@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function sum()
+        // {
+        //     console.log(arguments);
+            
+        // }
+        
+        // 定义一个函数，它只有一个剩余参数，它会把所有的实参以数组的格式全收集起来
+        function sum(...abc)
+        {
+            let rs = 0
+            console.log(abc);
+            for(let i = 0 ;i <abc.length; i++){
+                rs += abc[i]
+            }
+
+            console.log(rs)
+            
+        }
+
+        sum(1,2,3,4,5,6)
+
+        // function f1 (x,y){
+        //     console.log(x,y)
+        // }
+        // f1(1,2); // 1,2
+        // f1(2,3,4); // 2，3
+
+        // 定义函数时，最后一个形参前有...
+        // function f2 (x,...y){
+        //     console.log(x,y)
+        // }
+        // f2(); //  undefined []
+        // f2(1,2); // 1, [2]
+        // f2(2,3,4);//2, [2,3]
+
+
+
+
+    </script>
+</body>
+</html>
